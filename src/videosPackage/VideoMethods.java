@@ -62,28 +62,35 @@ public class VideoMethods {
 			
 		int num=-1;
 		
-		do {
-
-			System.out.println("\n Select # video you want to delete.. ");
+		if(user.getVideoList().size()>0)
+		{
+			do {
+				
+				System.out.println("\n Select # video you want to delete.. ");
+				
+				for(int i=0; i<user.getVideoList().size(); i++)
+				{
+					System.out.println("-----------------------------------------------");
+					System.out.println("TITLE:");
+					System.out.println("\t"+(i+1)+"- "+user.getVideoList().get(i).getTitle());
+				}	
 			
-			for(int i=0; i<user.getVideoList().size(); i++)
-			{
-				System.out.println("-----------------------------------------------");
-				System.out.println("TITLE:");
-				System.out.println("\t"+(i+1)+"- "+user.getVideoList().get(i).getTitle());
-			}
+				System.out.println("\n Select # video you want to delete.. ");
+				
+				num=Integer.parseInt(UserInput.inPut());
 			
-			System.out.println("\n Select # video you want to delete.. ");
-			
-			num=Integer.parseInt(UserInput.inPut());
-			
-			if(num==-1) {
-				System.out.println("Error, you must put a correct option... please try again!");
-			}
+				if(num==-1) {
+					System.out.println("Error, you must put a correct option... please try again!");
+				}
 			 
-		}while(num==-1);
-		
-		user.getVideoList().remove(num-1);		
+			}while(num==-1);
+			
+			user.getVideoList().remove(num-1);
+			
+		}else {
+				System.out.println("Empty List...");
+			}				
 	}
 
+	
 }

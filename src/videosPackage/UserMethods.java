@@ -91,38 +91,31 @@ public class UserMethods {
     }
 	
 	
-//	Connects selected option with method.  
+//	Connects selected option "viewUserMeu" with option "method".  
 	public static void userMenu(User user)
-	{		
-		int ask;
-		
-		
+	{				
+		System.out.println("-----------------------------------------------");
 		System.out.println("\nWelcome "+user.getName()+" what do you want to do?");
-		
-		do {
 	
-			switch(Views.viewUserMenu())
-			{
-				case 1:
-					user.setVideo(VideoMethods.addNewVideo());
-					break;
-				case 2:
-					VideoMethods.showVideoList(user);
-					break;
-				case 3:
-					VideoMethods.deleteVideo(user);
-					break;
-				case 4:
-					//"exit"
-					System.out.println("\nExit...");
-					break;	        			        			
+		switch(Views.viewUserMenu())
+		{
+			case 1:
+				user.setVideo(VideoMethods.addNewVideo());
+				userMenu(user);
+				break;
+			case 2:
+				VideoMethods.showVideoList(user);
+				userMenu(user);
+				break;
+			case 3:
+				VideoMethods.deleteVideo(user);
+				userMenu(user);
+				break;
+			case 4:
+				System.out.println("\nExit...");
+				break;	        			        			
 		}
 					
-		System.out.println("\n\tPress '1' to continue operating.\n");
-		ask=Integer.parseInt(UserInput.inPut());
-					
-		}while(ask==1);
-		
 	}
 	
 
